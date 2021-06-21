@@ -19,11 +19,7 @@
       let editor;
 
       ClassicEditor
-        .create(document.querySelector('#editor'), {
-        ckfinder: {
-            uploadUrl: 'https://api.imgbb.com/1/upload?expiration=600&key=dd1165fec1e0af97cb11103cd6c1b77a'
-        }
-    } )
+        .create(document.querySelector('#editor'))
         .then(newEditor => {
           editor = newEditor;
         })
