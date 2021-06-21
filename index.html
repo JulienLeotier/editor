@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>CKEditor</title>
+  <script src="https://cdn.ckeditor.com/ckeditor5/28.0.0/classic/ckeditor.js"></script>
+</head>
+
+<body>
+
+
+
+  <body>
+    <div id="editor">...</div>
+    <button class="button" onclick="sendText()">Submit text</button>
+
+    <script>
+      let editor;
+
+      ClassicEditor
+        .create(document.querySelector('#editor'), {
+        ckfinder: {
+            uploadUrl: 'https://api.imgbb.com/1/upload?expiration=600&key=dd1165fec1e0af97cb11103cd6c1b77a'
+        }
+    } )
+        .then(newEditor => {
+          editor = newEditor;
+        })
+        .catch(error => {
+          console.error(error);
+        });
+
+      function sendText() {
+        window.parent.postMessage(editor.getData(), "*");
+      }
+    </script>
+  </body>
+
+</html>
